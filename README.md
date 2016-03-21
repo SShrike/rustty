@@ -25,7 +25,7 @@ will be marked with a cross (✗).
 
 Add the following to your `Cargo.toml` under the dependencies section:
 
-```
+```toml
 [dependencies]
 rustty = "^0.1.0"
 ```
