@@ -2,7 +2,7 @@
 
 RusTTY is a toolbox for developing command line applications in Rust, influenced
 by the [TTY library][tty] for Ruby. RusTTY intends to reach feature parity with
-the majority of TTY's features to the extent that it is practical and have
+the majority of TTY's features to the extent that is practical as well as have
 an extensive and thorough test suite.
 
 ## Features
