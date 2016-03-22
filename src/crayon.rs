@@ -24,7 +24,7 @@
 //! `Color`. For example, here is how you get red text and blue text:
 //!
 //! ```
-//! use rustty::crayon::Color::{Red, Blue};
+//! use tutil::crayon::Color::{Red, Blue};
 //!
 //! println!("{}", Red.paint("Hello world in red!"));
 //! println!("{}", Blue.paint("Hello world in blue!"));
@@ -40,7 +40,7 @@
 //!
 //! ```
 //! use std::string::ToString;
-//! use rustty::crayon::Color::Blue;
+//! use tutil::crayon::Color::Blue;
 //!
 //! let string = Blue.paint("Hello!").to_string(); // => "\x1b[34mTEST\x1b[0m"
 //! ```
@@ -51,8 +51,8 @@
 //! directly on a `Color`:
 //!
 //! ```
-//! use rustty::crayon::Style;
-//! use rustty::crayon::Color::{Red, Blue};
+//! use tutil::crayon::Style;
+//! use tutil::crayon::Color::{Red, Blue};
 //!
 //! // Red blinking text on a black background:
 //! println!("This will be {} and this will be {}.",
@@ -65,7 +65,7 @@
 //! `Style::new()`:
 //!
 //! ```
-//! use rustty::crayon::Color::{Red, Blue};
+//! use tutil::crayon::Color::{Red, Blue};
 //!
 //! // Red blinking text on a black background:
 //! println!("This will be {} and this will be {}.",
@@ -310,6 +310,12 @@ impl Style {
         Style::default()
     }
 
+    /// Applies the `Style` to a string, yielding a `StyledString`.
+    pub fn paint<'a, S>(self, string: S) -> StyledString<'a>
+    where S: Into<Cow<'a, str>> {
+        StyledString { string: string.into(), style: self }
+    }
+
     /// Sets the foreground to the given colour.
     pub fn foreground(&self, color: Color) -> Style {
         Style { foreground: Some(color), .. *self }
@@ -318,12 +324,6 @@ impl Style {
     /// Sets the background to the given colour.
     pub fn background(&self, color: Color) -> Style {
         Style { background: Some(color), .. *self }
-    }
-
-    /// Applies the `Style` to a string, yielding a `StyledString`.
-    pub fn paint<'a, S>(self, string: S) -> StyledString<'a>
-    where S: Into<Cow<'a, str>> {
-        StyledString { string: string.into(), style: self }
     }
 
     /// Applies the 'bold' property.

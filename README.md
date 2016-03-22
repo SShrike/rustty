@@ -1,9 +1,12 @@
-# RusTTY
+# Tutil
 
-RusTTY is a toolbox for developing command line applications in Rust, influenced
-by the [TTY library][tty] for Ruby. RusTTY intends to reach feature parity with
-the majority of TTY's features to the extent that is practical as well as have
-an extensive and thorough test suite.
+[![Travis CI][travis-ci-badge]][travis-ci]
+[![Gitter][gitter-badge]][gitter]
+
+Tutil is a toolbox for developing command line applications in Rust, influenced
+by the [TTY library][tty] for Ruby which intends to reach feature parity with
+the majority of TTY's features to the extent that is practical in addition to
+having an extensive and thorough test suite.
 
 ## Features
 
@@ -27,7 +30,13 @@ Add the following to your `Cargo.toml` under the dependencies section:
 
 ```toml
 [dependencies]
-rustty = "^0.1.0"
+tutil = "^0.1.0"
 ```
 
+<!-- Links -->
 [tty]: http://peter-murach.github.io/tty/
+<!-- Badge links and SVGs -->
+[travis-ci]: https://travis-ci.org/SShrike/tutil
+[travis-ci-badge]: https://img.shields.io/travis/SShrike/tutil.svg
+[gitter]: https://gitter.im/SShrike/tutil
+[gitter-badge]: https://img.shields.io/gitter/room/SShrike/tutil.svg

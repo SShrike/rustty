@@ -1,7 +1,7 @@
-extern crate rustty;
+extern crate tutil;
 
-use rustty::crayon::Style;
-use rustty::crayon::Color::*;
+use tutil::crayon::Style;
+use tutil::crayon::Color::*;
 
 fn main() {
     println!("{}", Red.on(Black).blink().paint("Hello world!"));

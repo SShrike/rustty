@@ -1,11 +1,11 @@
 [package]
-name = "rustty"
+name = "tutil"
 version = "0.1.0"
 license = "MPL-2.0"
 authors = ["Severen Redwood <severen@shrike.me>"]
 
 readme = "README.md"
-homepage = "https://github.com/SShrike/rustty"
+homepage = "https://github.com/SShrike/tutil"
 description = "A toolbox for developing command line applications."
 
 [dependencies]

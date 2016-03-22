@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-//! RusTTY is a toolbox for developing command line applications in Rust,
+//! Tutil is a toolbox for developing command line applications in Rust,
 //! influenced by the [TTY library][tty] for Ruby. It provides modules for
 //! common tasks such as colourisation, gathering information from the user,
 //! confirmation prompts, and querying the system and terminal. It is not
@@ -16,8 +16,8 @@
 //! [pull request][pr] correcting the spelling.
 //!
 //! [tty]: http://peter-murach.github.io/tty/
-//! [br]: https://github.com/SShrike/rustty/issues
-//! [pr]: https://github.com/SShrike/rustty/pulls
+//! [br]: https://github.com/SShrike/tutil/issues
+//! [pr]: https://github.com/SShrike/tutil/pulls
 
 #![cfg_attr(feature = "lints", feature(plugin))]
 #![cfg_attr(feature = "lints", plugin(clippy))]
