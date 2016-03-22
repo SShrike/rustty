@@ -29,6 +29,8 @@ will be marked with a cross (✗).
 - User input prompts. ✗
 - Windows support. ✗
 
+There is a [tracking issue][ti] for these which may be more up-to-date.
+
 ## Installation
 
 Add the following to your `Cargo.toml` under the dependencies section:
@@ -39,6 +41,7 @@ tutil = "^0.1.0"
 ```
 
 <!-- Links -->
+[ti]: https:://github.com/SShrike/tutil/issues/1
 [tty]: http://peter-murach.github.io/tty/
 <!-- Badge links and SVGs -->
 [travis-ci]: https://travis-ci.org/SShrike/tutil
