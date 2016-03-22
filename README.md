@@ -11,6 +11,8 @@ by the [TTY library][tty] for Ruby which intends to reach feature parity with
 the majority of TTY's features to the extent that is practical in addition to
 having an extensive and thorough test suite.
 
+The documentation can by accessed on my [website](https://shrike.me/tutil).
+
 ## Features
 
 Implemented features will be marked with a tick (✔) and unimplemented features
