@@ -30,4 +30,4 @@ script:
 after_success:
 - |
   travis-cargo coveralls --no-sudo --verify
-  travis-cargo --only stable upload
+  travis-cargo --only stable doc-upload
