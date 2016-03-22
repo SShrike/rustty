@@ -19,6 +19,8 @@
 //! [br]: https://github.com/SShrike/tutil/issues
 //! [pr]: https://github.com/SShrike/tutil/pulls
 
+#![doc(html_root_url = "https://shrike.me/tutil/")]
+
 #![cfg_attr(feature = "lints", feature(plugin))]
 #![cfg_attr(feature = "lints", plugin(clippy))]
 

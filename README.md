@@ -1,7 +1,10 @@
 # Tutil
 
 [![Travis CI][travis-ci-badge]][travis-ci]
+[![Coveralls][coveralls-badge]][coveralls]
+[![Crates.io][crates-io-badge]][crates-io]
 [![Gitter][gitter-badge]][gitter]
+[![License][license-badge]][license]
 
 Tutil is a toolbox for developing command line applications in Rust, influenced
 by the [TTY library][tty] for Ruby which intends to reach feature parity with
@@ -38,5 +41,11 @@ tutil = "^0.1.0"
 <!-- Badge links and SVGs -->
 [travis-ci]: https://travis-ci.org/SShrike/tutil
 [travis-ci-badge]: https://img.shields.io/travis/SShrike/tutil.svg
+[coveralls]: https://coveralls.io/github/SShrike/tutil
+[coveralls-badge]: https://img.shields.io/coveralls/SShrike/tutil.svg
+[crates-io]: https://crates.io/crates/tutil
+[crates-io-badge]: https://img.shields.io/crates/v/tutil.svg
 [gitter]: https://gitter.im/SShrike/tutil
 [gitter-badge]: https://img.shields.io/gitter/room/SShrike/tutil.svg
+[license]: https://www.mozilla.org/en-GB/MPL/2.0/
+[license-badge]: https://img.shields.io/crates/l/tutil.svg
