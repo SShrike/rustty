@@ -1,5 +1,9 @@
 language: rust
 
+os:
+  - linux
+  - osx
+
 addons:
   apt:
     packages:
@@ -20,14 +24,28 @@ env:
 
 before_script:
 - |
-  pip install 'travis-cargo<0.2' --user &&
-  export PATH=$HOME/.local/bin:$PATH
+  if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
+    pip install 'travis-cargo<0.2' --user &&
+    export PATH=$HOME/.local/bin:$PATH
+  elif [ "$TRAVIS_OS_NAME" == 'osx' ]; then
+    echo 'travis-cargo is not supported on OS X builds.'
+  fi
+
 script:
 - |
-  travis-cargo build &&
-  travis-cargo test
-  travis-cargo --only stable doc
+  if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
+    travis-cargo build &&
+    travis-cargo test
+    travis-cargo --only stable doc
+  else
+    cargo build --verbose &&
+    cargo test --verbose
+  fi
+
 after_success:
 - |
-  travis-cargo coveralls --no-sudo --verify
-  travis-cargo --only stable doc-upload
+  if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
+    travis-cargo coveralls --no-sudo --verify
+    travis-cargo --only stable doc-upload
+  fi
+  
