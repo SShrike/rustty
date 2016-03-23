@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## 0.1.1 - 2016-03-23
+## [0.1.1] - 2016-03-23
 
 ## Added
 - Documentation link in `Cargo.toml` and README.
@@ -11,3 +11,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - `tutil::pastel` module for terminal colourisation and styling.
+
+[0.1.1]: https://github.com/SShrike/tutil/compare/v0.1.0...v0.1.1
