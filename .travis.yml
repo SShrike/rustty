@@ -22,6 +22,14 @@ env:
   - TRAVIS_CARGO_NIGHTLY_FEATURE=lints
   - secure: Md/Q+PhcrhaIAlVo7275aVtLdqvHPF4IgZLHLlsssZNmM2spihJCNsAKu6BBbQAKwuyKznwcGRNHb+P7E3vaHMQRJVxHTz6wdCRhG2fzek73jaC+MIBVt0yJB6DmpS3PtzOeIgkShEnitxQ9Q/Vean0ORlW53hh3di7a8gRvXmuP8SB6342c+27W/ejIzu3wVqeVFJ/ZDMm1bh1Ar8MWqVTz4oskO9zIxt4m2g272+v091K4c+wg5+qu54bY7ltV36ErSBLKtNawhupWKfCJjSYO6whN+6CQ2uq1NpFP4uErf6RzgWqTtUc1vlGnhWtj3m5Aj3dW1iiGkn2BmyQ3rGAqQLpYtTLU1kdazGfCs83x0VRaJVl/Nra9i9BEQxU5QAJvV/nBIhHvCVcZSwITs4ArJfilJnSBWECj390j1R6VzyjvRv9Zb/lef7ta1jLrh1stmiVnjcgEtCmc77DJt74JzBzjIpT0N5Pc0ubrHsL18WGbjJFquaxp/OBzZTqxuAhHO49Silzp7rhXrWqPL2iQQKIFHc1SF8YwlJ/Vxc+6AAnTvuwt7BdmuupyNExZFtqxNOIVNu50ty4tgftby+93/gSYgscrsQ/BMu+NUXMcnM53kN2Ck3Q0LiLyPdSTLwQ4MG1GZ2EgFrLeVM2nBiY1xbC4pFQEybZTIl1woNw=
 
+notifications:
+  webhooks:
+    urls:
+      - $GITTER_WEBHOOK
+    on_success: change
+    on_failure: always
+    on_start: never
+
 before_script:
 - |
   if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
@@ -48,4 +56,3 @@ after_success:
     travis-cargo coveralls --no-sudo --verify
     travis-cargo --only stable doc-upload
   fi
-  
