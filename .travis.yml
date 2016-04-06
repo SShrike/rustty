@@ -30,28 +30,28 @@ notifications:
     on_start: never
 
 before_script:
-- |
-  if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
-    pip install 'travis-cargo<0.2' --user &&
-    export PATH=$HOME/.local/bin:$PATH
-  elif [ "$TRAVIS_OS_NAME" == 'osx' ]; then
-    echo 'travis-cargo is not supported on OS X builds.'
-  fi
+  - |
+    if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
+      pip install 'travis-cargo<0.2' --user &&
+      export PATH=$HOME/.local/bin:$PATH
+    elif [ "$TRAVIS_OS_NAME" == 'osx' ]; then
+      echo 'travis-cargo is not supported on OS X builds.'
+    fi
 
 script:
-- |
-  if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
-    travis-cargo build &&
-    travis-cargo test
-    travis-cargo --only stable doc
-  else
-    cargo build --verbose &&
-    cargo test --verbose
-  fi
+  - |
+    if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
+      travis-cargo build &&
+      travis-cargo test
+      travis-cargo --only stable doc
+    else
+      cargo build --verbose &&
+      cargo test --verbose
+    fi
 
 after_success:
-- |
-  if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
-    travis-cargo coveralls --no-sudo --verify
-    travis-cargo --only stable doc-upload
-  fi
+  - |
+    if [ "$TRAVIS_OS_NAME" == 'linux' ]; then
+      travis-cargo coveralls --no-sudo --verify
+      travis-cargo --only stable doc-upload
+    fi
