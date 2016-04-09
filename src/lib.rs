@@ -24,6 +24,8 @@
 #![cfg_attr(feature = "lints", feature(plugin))]
 #![cfg_attr(feature = "lints", plugin(clippy))]
 
+#![allow(doc_markdown)]
+
 #![warn(missing_docs)]
 #![warn(trivial_casts, trivial_numeric_casts)]
 #![warn(unused_extern_crates, unused_qualifications)]
