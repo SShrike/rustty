@@ -4,7 +4,7 @@
 [![Coveralls][coveralls-badge]][coveralls]
 [![Clippy][clippy-badge]][clippy]
 [![Crates.io][crates-io-badge]][crates-io]
-[![Gitter][gitter-badge]][gitter]
+[![Chat Room][chat-room-badge]][chat-room]
 [![License][license-badge]][license]
 
 Tutil is a toolbox for developing command line applications in Rust, influenced
@@ -53,7 +53,7 @@ tutil = "^0.1.0"
 [clippy-badge]: https://clippy.bashy.io/github/SShrike/tutil/master/badge.svg
 [crates-io]: https://crates.io/crates/tutil
 [crates-io-badge]: https://img.shields.io/crates/v/tutil.svg
-[gitter]: https://gitter.im/SShrike/tutil
-[gitter-badge]: https://img.shields.io/gitter/room/SShrike/tutil.svg
+[chat-room]: https://vector.im/beta/#/room/#tutil:matrix.org
+[chat-room-badge]: https://img.shields.io/badge/chat-%23tutil%3Amatrix.org-00B4B7.svg
 [license]: https://www.mozilla.org/en-GB/MPL/2.0/
 [license-badge]: https://img.shields.io/crates/l/tutil.svg
