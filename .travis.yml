@@ -17,6 +17,8 @@ rust:
 - beta
 - stable
 
+cache: cargo
+
 env:
   global:
   - TRAVIS_CARGO_NIGHTLY_FEATURE=lints
