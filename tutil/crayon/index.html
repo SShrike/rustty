@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `crayon` mod in crate `tutil`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, crayon">
+
+    <title>tutil::crayon - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>tutil</a></p><script>window.sidebarCurrent = {name: 'crayon', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>tutil</a>::<wbr><a class='mod' href=''>crayon</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-4' class='srclink' href='../../src/tutil/src/crayon.rs.html#5-487' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>A module for the manipulation of colours and formatting.</p>
+
+<p>It would be fair to say that this module <del>is a rip off of</del> is <em>heavily</em>
+influenced by <a href="https://github.com/ogham">ogham</a>&#39;s <a href="https://github.com/ogham/rust-ansi-term">ansi_term</a> crate and
+<a href="https://github.com/peter-murach">peter-murach</a>&#39;s <a href="https://github.com/peter-murach/pastel">Pastel</a> library. However if there is
+something original of mine in here it would be true-colour support at the
+very least.</p>
+
+<p>For now this module only supports Unix-like environments (Linux, BSD, OS X,
+Cygwin, etc.) but there are plans to support Windows in the future.</p>
+
+<h1 id='basic-usage' class='section-header'><a href='#basic-usage'>Basic usage</a></h1>
+<p>The two main data structures in this module are <code>Style</code>, which holds
+stylistic information such as the foreground colour, the background colour
+and other properties such as if the text should be bold, blinking, etc. and
+<code>ANSIString</code>, which is string paired with a <code>Style</code>.</p>
+
+<p>In order to format a string, call the <code>paint()</code> method on a <code>Style</code> or
+<code>Color</code>. For example, here is how you get red text and blue text:</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>tutil</span>::<span class='ident'>crayon</span>::<span class='ident'>Color</span>::{<span class='ident'>Red</span>, <span class='ident'>Blue</span>};
+
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>Red</span>.<span class='ident'>paint</span>(<span class='string'>&quot;Hello world in red!&quot;</span>));
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>Blue</span>.<span class='ident'>paint</span>(<span class='string'>&quot;Hello world in blue!&quot;</span>));</pre>
+
+<p>It is worth noting that <code>paint()</code> does not actually return a string with the
+escape codes surrounding it, but instead returns a <code>StyledString</code> that has
+an implementation of <code>Display</code> that will return the escape codes as well as
+the string when formatted.</p>
+
+<p>In the case that you <em>do</em> want the escape codes, you can convert the
+<code>StyledString</code> to a string:</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>string</span>::<span class='ident'>ToString</span>;
+<span class='kw'>use</span> <span class='ident'>tutil</span>::<span class='ident'>crayon</span>::<span class='ident'>Color</span>::<span class='ident'>Blue</span>;
+
+<span class='kw'>let</span> <span class='ident'>string</span> <span class='op'>=</span> <span class='ident'>Blue</span>.<span class='ident'>paint</span>(<span class='string'>&quot;Hello!&quot;</span>).<span class='ident'>to_string</span>(); <span class='comment'>// =&gt; &quot;\x1b[34mTEST\x1b[0m&quot;</span></pre>
+
+<h1 id='advanced-usage' class='section-header'><a href='#advanced-usage'>Advanced Usage</a></h1>
+<p>For complex styling you can construct a <code>Style</code> object rather than operating
+directly on a <code>Color</code>:</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>tutil</span>::<span class='ident'>crayon</span>::<span class='ident'>Style</span>;
+<span class='kw'>use</span> <span class='ident'>tutil</span>::<span class='ident'>crayon</span>::<span class='ident'>Color</span>::{<span class='ident'>Red</span>, <span class='ident'>Blue</span>};
+
+<span class='comment'>// Red blinking text on a black background:</span>
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;This will be {} and this will be {}.&quot;</span>,
+         <span class='ident'>Style</span>::<span class='ident'>new</span>().<span class='ident'>foreground</span>(<span class='ident'>Red</span>).<span class='ident'>bold</span>().<span class='ident'>paint</span>(<span class='string'>&quot;red and bold&quot;</span>),
+         <span class='ident'>Style</span>::<span class='ident'>new</span>().<span class='ident'>foreground</span>(<span class='ident'>Blue</span>).<span class='ident'>italic</span>().<span class='ident'>paint</span>(<span class='string'>&quot;blue and italic&quot;</span>));</pre>
+
+<p>The same styling methods that you can use on a <code>Style</code> have been implemented
+on the <code>Color</code> struct, allowing you to skip creating an empty <code>Style</code> with
+<code>Style::new()</code>:</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>tutil</span>::<span class='ident'>crayon</span>::<span class='ident'>Color</span>::{<span class='ident'>Red</span>, <span class='ident'>Blue</span>};
+
+<span class='comment'>// Red blinking text on a black background:</span>
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;This will be {} and this will be {}.&quot;</span>,
+         <span class='ident'>Red</span>.<span class='ident'>bold</span>().<span class='ident'>paint</span>(<span class='string'>&quot;red and bold&quot;</span>),
+         <span class='ident'>Blue</span>.<span class='ident'>italic</span>().<span class='ident'>paint</span>(<span class='string'>&quot;blue and italic&quot;</span>));</pre>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Style.html'
+                               title='tutil::crayon::Style'>Style</a></td>
+                        <td class='docblock short'>
+                             <p>A collection of properties that are used to format a string.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.StyledString.html'
+                               title='tutil::crayon::StyledString'>StyledString</a></td>
+                        <td class='docblock short'>
+                             <p>A string coupled with a <code>Style</code> in order to display it in a terminal.</p>
+                        </td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Color.html'
+                               title='tutil::crayon::Color'>Color</a></td>
+                        <td class='docblock short'>
+                             <p>A <code>Color</code> is a specific ANSI colour name which can refer to either the
+foreground or background.</p>
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "tutil";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

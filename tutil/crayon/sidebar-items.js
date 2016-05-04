@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Color","A `Color` is a specific ANSI colour name which can refer to either the foreground or background."]],"struct":[["Style","A collection of properties that are used to format a string."],["StyledString","A string coupled with a `Style` in order to display it in a terminal."]]});

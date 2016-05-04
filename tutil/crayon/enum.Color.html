@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Color` enum in crate `tutil`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Color">
+
+    <title>tutil::crayon::Color - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>tutil</a>::<wbr><a href='index.html'>crayon</a></p><script>window.sidebarCurrent = {name: 'Color', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>tutil</a>::<wbr><a href='index.html'>crayon</a>::<wbr><a class='enum' href=''>Color</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-66' class='srclink' href='../../src/tutil/src/crayon.rs.html#136-197' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Color {
+    Black,
+    Red,
+    Green,
+    Yellow,
+    Blue,
+    Purple,
+    Cyan,
+    White,
+    Fixed(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>),
+    Rgb(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>),
+}</pre><div class='docblock'><p>A <code>Color</code> is a specific ANSI colour name which can refer to either the
+foreground or background.</p>
+
+<p>It can also be a custom value from 0 to 255 via the <code>Fixed(u8)</code> variant for
+terminals that have 256-colour. True-colour is also supported via the
+<code>Rgb(u8, u8, u8)</code> variant.</p>
+
+<p>For further reading visit this <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Colors">Wikipedia page</a>.</p>
+</div><h2 class='variants'>Variants</h2>
+<table class='variants_table'><tr><td id='variant.Black'><code>Black</code></td><td><div class='docblock'><p>Foreground code <code>30</code>, background code <code>40</code>.</p>
+</div></td><td></td></tr><tr><td id='variant.Red'><code>Red</code></td><td><div class='docblock'><p>Foreground code <code>31</code>, background code <code>41</code>.</p>
+</div></td><td></td></tr><tr><td id='variant.Green'><code>Green</code></td><td><div class='docblock'><p>Foreground code <code>32</code>, background code <code>42</code>.</p>
+</div></td><td></td></tr><tr><td id='variant.Yellow'><code>Yellow</code></td><td><div class='docblock'><p>Foreground code <code>33</code>, background code <code>43</code>.</p>
+</div></td><td></td></tr><tr><td id='variant.Blue'><code>Blue</code></td><td><div class='docblock'><p>Foreground code <code>34</code>, background code <code>44</code>.</p>
+</div></td><td></td></tr><tr><td id='variant.Purple'><code>Purple</code></td><td><div class='docblock'><p>Foreground code <code>35</code>, background code <code>45</code>.</p>
+</div></td><td></td></tr><tr><td id='variant.Cyan'><code>Cyan</code></td><td><div class='docblock'><p>Foreground code <code>36</code>, background code <code>46</code>.</p>
+</div></td><td></td></tr><tr><td id='variant.White'><code>White</code></td><td><div class='docblock'><p>Foreground code <code>37</code>, background code <code>47</code>.</p>
+</div></td><td></td></tr><tr><td id='variant.Fixed'><code>Fixed</code></td><td><div class='docblock'><p>A value from 0 to 255 for use on terminals that have 256-colour support.</p>
+
+<ul>
+<li>0 to 7 are the <code>Black</code> through <code>White</code> variants. These colours can
+usually be changed in the terminal emulator.</li>
+<li>8 to 15 are brighter versions of the aforementioned colours. These
+colours can also usually be changed in the terminal emulator,
+however, it also could be configured to use the original colours and
+show the text in bold.</li>
+<li>16 to 231 contain several palettes of bright colours, arranged in six
+squares measuring six by six each.</li>
+<li>232 to 255 are shades of grey from black to white.</li>
+</ul>
+
+<p>You can view this <a href="https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg">colour chart</a> for a visual representation.</p>
+</div></td><td></td></tr><tr><td id='variant.Rgb'><code>Rgb</code></td><td><div class='docblock'><p>A red value, green value and blue value, each between 0 to 255 (the RGB
+colour model) for use on terminals that have true-colour support.</p>
+
+<p>Please note that true-colour support on many terminal emulators is
+patchy, however a fair share of the most common terminal emulators
+support it, such as:</p>
+
+<ul>
+<li><a href="https://wiki.gnome.org/Apps/Terminal">Gnome Terminal</a></li>
+<li><a href="https://konsole.kde.org/">Konsole</a></li>
+<li><a href="http://gnometerminator.blogspot.co.nz">Terminator</a></li>
+<li><a href="https://www.iterm2.com/">iTerm 2</a></li>
+</ul>
+
+<p>For an up-to-date list of true-colour support visit:
+<a href="https://gist.github.com/XVilka/8346728">https://gist.github.com/XVilka/8346728</a>.</p>
+</div></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../../tutil/crayon/enum.Color.html' title='tutil::crayon::Color'>Color</a></code></h3><div class='impl-items'><h4 id='method.paint' class='method'><code>fn <a href='#method.paint' class='fnname'>paint</a>&lt;'a, S&gt;(self, string: S) -&gt; <a class='struct' href='../../tutil/crayon/struct.StyledString.html' title='tutil::crayon::StyledString'>StyledString</a>&lt;'a&gt; <span class='where'>where S: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;&gt;</span></code></h4>
+<div class='docblock'><p>Convenience method for creating a <code>StyledString</code> with the foreground set
+without having to manually create a <code>Style</code> or use <code>&lt;color&gt;.normal().paint()</code>.</p>
+</div><h4 id='method.normal' class='method'><code>fn <a href='#method.normal' class='fnname'>normal</a>(self) -&gt; <a class='struct' href='../../tutil/crayon/struct.Style.html' title='tutil::crayon::Style'>Style</a></code></h4>
+<div class='docblock'><p>Returns a <code>Style</code> with the foreground colour set to this colour.</p>
+</div><h4 id='method.on' class='method'><code>fn <a href='#method.on' class='fnname'>on</a>(self, background: <a class='enum' href='../../tutil/crayon/enum.Color.html' title='tutil::crayon::Color'>Color</a>) -&gt; <a class='struct' href='../../tutil/crayon/struct.Style.html' title='tutil::crayon::Style'>Style</a></code></h4>
+<div class='docblock'><p>The same as <code>Color::normal()</code>, but also sets the background colour.</p>
+</div><h4 id='method.bold' class='method'><code>fn <a href='#method.bold' class='fnname'>bold</a>(self) -&gt; <a class='struct' href='../../tutil/crayon/struct.Style.html' title='tutil::crayon::Style'>Style</a></code></h4>
+<div class='docblock'><p>Returns a <code>Style</code> with the &#39;bold&#39; property set and the foreground colour
+set to this colour.</p>
+</div><h4 id='method.dimmed' class='method'><code>fn <a href='#method.dimmed' class='fnname'>dimmed</a>(self) -&gt; <a class='struct' href='../../tutil/crayon/struct.Style.html' title='tutil::crayon::Style'>Style</a></code></h4>
+<div class='docblock'><p>Returns a <code>Style</code> with the &#39;dimmed&#39; property set and the foreground
+colour set to this colour.</p>
+</div><h4 id='method.italic' class='method'><code>fn <a href='#method.italic' class='fnname'>italic</a>(self) -&gt; <a class='struct' href='../../tutil/crayon/struct.Style.html' title='tutil::crayon::Style'>Style</a></code></h4>
+<div class='docblock'><p>Returns a <code>Style</code> with the &#39;italic&#39; property set and the foreground
+colour set to this colour.</p>
+</div><h4 id='method.underline' class='method'><code>fn <a href='#method.underline' class='fnname'>underline</a>(self) -&gt; <a class='struct' href='../../tutil/crayon/struct.Style.html' title='tutil::crayon::Style'>Style</a></code></h4>
+<div class='docblock'><p>Returns a <code>Style</code> with the &#39;underline&#39; property set and the foreground
+colour set to this colour.</p>
+</div><h4 id='method.blink' class='method'><code>fn <a href='#method.blink' class='fnname'>blink</a>(self) -&gt; <a class='struct' href='../../tutil/crayon/struct.Style.html' title='tutil::crayon::Style'>Style</a></code></h4>
+<div class='docblock'><p>Returns a <code>Style</code> with the &#39;blink&#39; property set and the foreground
+colour set to this colour.</p>
+</div><h4 id='method.reverse' class='method'><code>fn <a href='#method.reverse' class='fnname'>reverse</a>(self) -&gt; <a class='struct' href='../../tutil/crayon/struct.Style.html' title='tutil::crayon::Style'>Style</a></code></h4>
+<div class='docblock'><p>Returns a <code>Style</code> with the &#39;reverse&#39; property set and the foreground
+colour set to this colour.</p>
+</div><h4 id='method.hidden' class='method'><code>fn <a href='#method.hidden' class='fnname'>hidden</a>(self) -&gt; <a class='struct' href='../../tutil/crayon/struct.Style.html' title='tutil::crayon::Style'>Style</a></code></h4>
+<div class='docblock'><p>Returns a <code>Style</code> with the &#39;hidden&#39; property set and the foreground
+colour set to this colour.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='enum' href='../../tutil/crayon/enum.Color.html' title='tutil::crayon::Color'>Color</a></code></h3><div class='impl-items'><h4 id='method.eq' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../tutil/crayon/enum.Color.html' title='tutil::crayon::Color'>Color</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../tutil/crayon/enum.Color.html' title='tutil::crayon::Color'>Color</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='enum' href='../../tutil/crayon/enum.Color.html' title='tutil::crayon::Color'>Color</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../../tutil/crayon/enum.Color.html' title='tutil::crayon::Color'>Color</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../../tutil/crayon/enum.Color.html' title='tutil::crayon::Color'>Color</a></code></h4>
+<h4 id='method.clone_from' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../tutil/crayon/enum.Color.html' title='tutil::crayon::Color'>Color</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "tutil";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
