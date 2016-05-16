@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-//! A module for the manipulation of colours and formatting.
+//! A module for handling terminal output styling.
 //!
 //! It would be fair to say that this module ~~is a rip off of~~ is *heavily*
 //! influenced by [ogham][ogham]'s [ansi_term][ansiterm] crate and
@@ -10,10 +10,17 @@
 //! something original of mine in here it would be true-colour support at the
 //! very least.
 //!
-//! For now this module only supports Unix-like environments (Linux, BSD, OS X,
-//! Cygwin, etc.) but there are plans to support Windows in the future.
+//! # OS Support
 //!
-//! # Basic usage
+//! The following operating systems are supported:
+//!
+//! * Linux
+//! * BSD
+//! * OS X
+//!
+//! Windows support is planned.
+//!
+//! # Basic Usage
 //!
 //! The two main data structures in this module are `Style`, which holds
 //! stylistic information such as the foreground colour, the background colour
