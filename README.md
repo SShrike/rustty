@@ -41,7 +41,7 @@ tutil = "^0.1.0"
 ```
 
 <!-- Links -->
-[ti]: https:://github.com/SShrike/tutil/issues/1
+[ti]: https://github.com/SShrike/tutil/issues/1
 [tty]: http://peter-murach.github.io/tty/
 <!-- Badge links and SVGs -->
 [travis-ci]: https://travis-ci.org/SShrike/tutil
