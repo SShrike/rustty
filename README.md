@@ -2,7 +2,6 @@
 
 [![Travis CI][travis-ci-badge]][travis-ci]
 [![Coveralls][coveralls-badge]][coveralls]
-[![Clippy][clippy-badge]][clippy]
 [![Crates.io][crates-io-badge]][crates-io]
 [![Chat Room][chat-room-badge]][chat-room]
 [![License][license-badge]][license]
@@ -49,8 +48,6 @@ tutil = "^0.1.0"
 [travis-ci-badge]: https://img.shields.io/travis/SShrike/tutil.svg
 [coveralls]: https://coveralls.io/github/SShrike/tutil
 [coveralls-badge]: https://img.shields.io/coveralls/SShrike/tutil.svg
-[clippy]: https://clippy.bashy.io/github/SShrike/tutil/master/log
-[clippy-badge]: https://clippy.bashy.io/github/SShrike/tutil/master/badge.svg
 [crates-io]: https://crates.io/crates/tutil
 [crates-io-badge]: https://img.shields.io/crates/v/tutil.svg
 [chat-room]: https://vector.im/beta/#/room/#tutil:matrix.org
