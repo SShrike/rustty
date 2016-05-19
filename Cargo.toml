@@ -10,6 +10,7 @@ description = "A toolbox for developing command line applications."
 documentation = "https://shrike.me/tutil"
 
 [dependencies]
+libc = "^0.2.11"
 clippy = { version = "~0.0.55", optional = true }
 
 [features]

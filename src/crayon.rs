@@ -12,11 +12,11 @@
 //!
 //! # OS Support
 //!
-//! The following operating systems are supported:
-//!
 //! * Linux
-//! * BSD
 //! * OS X
+//! * FreeBSD
+//!
+//! Most other POSIX/*nix systems will probably work as well.
 //!
 //! Windows support is planned.
 //!
