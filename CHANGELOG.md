@@ -4,24 +4,24 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] - ∞
 
-## Added
+### Added
 - The initial implementation of the `tutil::screen` module.
 - The caching of Cargo dependencies on Travis CI.
 - Continuous integration for OS X.
 - An EditorConfig configuration file, in order to keep code style consistent.
 
-## Changed
+### Changed
 - Replaced the Gitter room with a
   [Matrix room](https://vector.im/beta/#/room/#tutil:matrix.org).
 - Code coverage is now only uploaded for CI builds on stable Rust.
 
-## Fixed
+### Fixed
 - The `unknown_lints` warning, which was triggered due to a missing
   `#[cfg_attr()]`.
 
 ## [0.1.1] - 2016-03-23
 
-## Added
+### Added
 - Documentation link in `Cargo.toml` and README.
 
 ## 0.1.0 - 2016-03-22
