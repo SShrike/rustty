@@ -8,6 +8,8 @@ Vagrant.configure('2') do |config|
   config.vm.guest = :freebsd
   config.vm.network('private_network', ip: '10.0.1.10')
 
+  config.vm.provision('shell', path: 'provision.sh')
+
   # Setup the synced folder to use Rsync.
   # TODO: Get NFS working.
   config.vm.synced_folder(
