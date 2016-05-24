@@ -5,15 +5,20 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased] - ∞
 
 ### Added
+- A provision script for the Vagrant environment.
+- A Vagrant environment for testing on FreeBSD locally.
 - The initial implementation of the `tutil::screen` module.
 - The caching of Cargo dependencies on Travis CI.
 - Continuous integration for OS X.
 - An EditorConfig configuration file, in order to keep code style consistent.
 
 ### Changed
+- A Git checkout of [libc](https://github.com/rust-lang/libc) is now used until
+  the latest fixes for FreeBSD are released on crates.io.
 - Replaced the Gitter room with a
   [Matrix room](https://vector.im/beta/#/room/#tutil:matrix.org).
 - Code coverage is now only uploaded for CI builds on stable Rust.
+- The `doc_markdown` code lint has been disabled.
 
 ### Fixed
 - The `unknown_lints` warning, which was triggered due to a missing
