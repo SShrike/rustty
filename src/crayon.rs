@@ -111,8 +111,7 @@ impl<'a> fmt::Display for StyledString<'a> {
     }
 }
 
-impl<'a, S> From<S> for StyledString<'a>
-where S: Into<Cow<'a, str>> {
+impl<'a, S> From<S> for StyledString<'a> where S: Into<Cow<'a, str>> {
     fn from(string: S) -> StyledString<'a> {
         StyledString {
             string: string.into(),
@@ -206,8 +205,7 @@ pub enum Color {
 impl Color {
     /// Convenience method for creating a `StyledString` with the foreground set
     /// without having to manually create a `Style` or use `<color>.normal().paint()`.
-    pub fn paint<'a, S>(self, string: S) -> StyledString<'a>
-    where S: Into<Cow<'a, str>> {
+    pub fn paint<'a, S>(self, string: S) -> StyledString<'a> where S: Into<Cow<'a, str>> {
         StyledString {
             string: string.into(),
             style: self.normal(),
@@ -318,8 +316,7 @@ impl Style {
     }
 
     /// Applies the `Style` to a string, yielding a `StyledString`.
-    pub fn paint<'a, S>(self, string: S) -> StyledString<'a>
-    where S: Into<Cow<'a, str>> {
+    pub fn paint<'a, S>(self, string: S) -> StyledString<'a> where S: Into<Cow<'a, str>> {
         StyledString { string: string.into(), style: self }
     }
 
