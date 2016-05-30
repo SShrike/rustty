@@ -97,6 +97,22 @@ mod test {
         cmd
     }
 
+
+    #[test]
+    fn correct_size() {
+        let output = create_command().output().unwrap();
+        let stdout = String::from_utf8(output.stdout).unwrap();
+        assert!(output.status.success());
+
+        let cols = u16::from_str_radix(stdout.split_whitespace().last().unwrap(), 10).unwrap();
+        let rows = u16::from_str_radix(stdout.split_whitespace().next().unwrap(), 10).unwrap();
+
+        if let Some((Width(width), Height(height))) = size() {
+            assert_eq!(width, cols);
+            assert_eq!(height, rows);
+        }
+    }
+
     #[test]
     fn correct_width() {
         let output = create_command().output().unwrap();
