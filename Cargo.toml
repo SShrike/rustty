@@ -10,7 +10,7 @@ description = "A toolbox for developing command line applications."
 documentation = "https://shrike.me/tutil"
 
 [dependencies]
-libc = { git = "https://github.com/rust-lang/libc" }
+libc = "^0.2.13"
 clippy = { version = "~0.0.55", optional = true }
 
 [features]
