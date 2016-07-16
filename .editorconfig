@@ -13,4 +13,4 @@ indent_size = 4
 indent_size = 2
 
 [.travis.yml]
-ident_size = 2
+indent_size = 2
