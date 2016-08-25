@@ -9,7 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - A Vagrant environment for testing on FreeBSD locally.
 - The initial implementation of the `tutil::screen` module.
 - The caching of Cargo dependencies on Travis CI.
-- Continuous integration for OS X.
+- Continuous integration for macOS.
 - An EditorConfig configuration file, in order to keep code style consistent.
 
 ### Changed

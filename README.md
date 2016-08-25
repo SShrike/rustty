@@ -11,8 +11,9 @@ by the [TTY library][tty] for Ruby which intends to reach feature parity with
 the majority of TTY's features to the extent that is practical in addition to
 having an extensive and thorough test suite.
 
-Tutil intends to support Linux, BSD, OS X and Windows. However, in this early
-stage of development, Tutil probably only works on Linux.
+Tutil intends to support Linux, BSD, macOS (formerly known as OS X) and Windows.
+However, in this early stage of development, Tutil in its entirety probably only
+works on Linux.
 
 The documentation can by accessed on my [website](https://shrike.me/tutil).
 

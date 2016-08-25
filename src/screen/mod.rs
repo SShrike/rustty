@@ -9,7 +9,7 @@
 //! The following operating systems are supported:
 //!
 //! * Linux
-//! * OS X
+//! * macOS
 //! * FreeBSD
 //!
 //! Windows support is planned.
