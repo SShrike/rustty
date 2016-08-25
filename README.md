@@ -50,7 +50,7 @@ tutil = "^0.1.0"
 
 <!-- Links -->
 [ti]: https://github.com/SShrike/tutil/issues/1
-[tty]: http://peter-murach.github.io/tty/
+[tty]: http://piotrmurach.github.io/tty/
 <!-- Badge links and SVGs -->
 [travis-ci]: https://travis-ci.org/SShrike/tutil
 [travis-ci-badge]: https://img.shields.io/travis/SShrike/tutil.svg
