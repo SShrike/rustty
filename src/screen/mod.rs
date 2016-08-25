@@ -63,7 +63,5 @@ pub use self::windows::height;
 
 #[cfg(test)]
 mod test {
-    use super::*;
-
     // TODO: Test the `fmt::Display` implementations for `Width` and `Height`.
 }
