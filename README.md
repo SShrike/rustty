@@ -1,10 +1,14 @@
 # Tutil
 
-[![Travis CI][travis-ci-badge]][travis-ci]
 [![Coveralls][coveralls-badge]][coveralls]
 [![Crates.io][crates-io-badge]][crates-io]
 [![Chat Room][chat-room-badge]][chat-room]
 [![License][license-badge]][license]
+
+| Build Status |                                            |
+|--------------|--------------------------------------------|
+| Travis       | [![Travis CI][travis-ci-badge]][travis-ci] |
+| AppVeyor     | [![AppVeyor][appveyor-badge]][appveyor]    |
 
 Tutil is a toolbox for developing command line applications in Rust, influenced
 by the [TTY library][tty] for Ruby which intends to reach feature parity with
@@ -50,6 +54,8 @@ tutil = "^0.1.0"
 <!-- Badge links and SVGs -->
 [travis-ci]: https://travis-ci.org/SShrike/tutil
 [travis-ci-badge]: https://img.shields.io/travis/SShrike/tutil.svg
+[appveyor]: https://ci.appveyor.com/project/SShrike/tutil
+[appveyor-badge]: https://img.shields.io/appveyor/ci/SShrike/tutil.svg
 [coveralls]: https://coveralls.io/github/SShrike/tutil
 [coveralls-badge]: https://img.shields.io/coveralls/SShrike/tutil.svg
 [crates-io]: https://crates.io/crates/tutil
