@@ -52,7 +52,7 @@ pub fn size() -> Option<(Width, Height)> {
     };
 
     let success: bool = unsafe {
-        GetConsoleScreenBufferInfo(hand, &mut csbi) != 0
+        GetConsoleScreenBufferInfo(handle, &mut csbi) != 0
     };
 
     if success {
