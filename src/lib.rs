@@ -15,7 +15,7 @@
 //! that is written in British English file a [bug report][br] or submit a
 //! [pull request][pr] correcting the spelling.
 //!
-//! [tty]: http://peter-murach.github.io/tty/
+//! [tty]: http://piotrmurach.github.io/tty/
 //! [br]: https://github.com/SShrike/tutil/issues
 //! [pr]: https://github.com/SShrike/tutil/pulls
 
