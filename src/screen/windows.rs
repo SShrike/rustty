@@ -27,11 +27,11 @@ pub fn size() -> Option<(Width, Height)> {
     let mut csbi = CONSOLE_SCREEN_BUFFER_INFO {
         // A COORD structure that contains the size of the console screen
         // buffer, in character columns and rows.
-        dwSize: coord.clone(),
+        dwSize: coord,
 
         // A COORD structure that contains the column and row coordinates of
         // the cursor in the console screen buffer.
-        dwCursorPosition: coord.clone(),
+        dwCursorPosition: coord,
 
         // The attributes of the characters written to a screen buffer by the
         // WriteFile and WriteConsole functions, or echoed to a screen buffer
