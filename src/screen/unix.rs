@@ -23,7 +23,7 @@ struct WinSize {
     ws_ypixel: c_ushort,
 }
 
-/// Returns the terminal screen size.
+/// Returns the terminal screen size (in columns and rows).
 ///
 /// Returns `None` if the screen size is `(0, 0)` or is not able to be
 /// determined.
@@ -42,7 +42,7 @@ pub fn size() -> Option<(Width, Height)> {
     Some((Width(width), Height(height)))
 }
 
-/// Returns the terminal screen width.
+/// Returns the terminal screen width (in columns).
 ///
 /// Returns `None` if the terminal width is detected as being <= 0 columns or is
 /// not able to be determined at all.
@@ -56,7 +56,7 @@ pub fn width() -> Option<Width> {
     }
 }
 
-/// Returns the terminal height.
+/// Returns the terminal screen height (in rows).
 ///
 /// Returns `None` if the terminal height is detected as being <= 0 rows or is
 /// not able to be determined at all.
