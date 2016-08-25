@@ -8,9 +8,7 @@
 
 use super::{Width, Height};
 
-use winapi::{DWORD, HANDLE};
-use winapi::{STD_INPUT_HANDLE, STD_OUTPUT_HANDLE};
-use winapi::{CONSOLE_SCREEN_BUFFER_INFO, COORD, SMALL_RECT};
+use winapi::{HANDLE, STD_OUTPUT_HANDLE, COORD, SMALL_RECT, CONSOLE_SCREEN_BUFFER_INFO};
 use kernel32::{GetStdHandle, GetConsoleScreenBufferInfo};
 
 /// Returns the terminal screen size.
