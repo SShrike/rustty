@@ -111,12 +111,11 @@ impl<'a> fmt::Display for StyledString<'a> {
     }
 }
 
-impl<'a, S> From<S> for StyledString<'a> where S: Into<Cow<'a, str>> {
+impl<'a, S> From<S> for StyledString<'a>
+    where S: Into<Cow<'a, str>>
+{
     fn from(string: S) -> StyledString<'a> {
-        StyledString {
-            string: string.into(),
-            style: Style::default(),
-        }
+        StyledString { string: string.into(), style: Style::default() }
     }
 }
 
@@ -205,91 +204,90 @@ pub enum Color {
 impl Color {
     /// Convenience method for creating a `StyledString` with the foreground set
     /// without having to manually create a `Style` or use `<color>.normal().paint()`.
-    pub fn paint<'a, S>(self, string: S) -> StyledString<'a> where S: Into<Cow<'a, str>> {
-        StyledString {
-            string: string.into(),
-            style: self.normal(),
-        }
+    pub fn paint<'a, S>(self, string: S) -> StyledString<'a>
+        where S: Into<Cow<'a, str>>
+    {
+        StyledString { string: string.into(), style: self.normal() }
     }
 
     /// Returns a `Style` with the foreground colour set to this colour.
     pub fn normal(self) -> Style {
-        Style { foreground: Some(self), .. Style::default() }
+        Style { foreground: Some(self), ..Style::default() }
     }
 
     /// The same as `Color::normal()`, but also sets the background colour.
     pub fn on(self, background: Color) -> Style {
-        Style { foreground: Some(self), background: Some(background), .. Style::default() }
+        Style { foreground: Some(self), background: Some(background), ..Style::default() }
     }
 
     /// Returns a `Style` with the 'bold' property set and the foreground colour
     /// set to this colour.
     pub fn bold(self) -> Style {
-        Style { foreground: Some(self), bold: true, .. Style::default() }
+        Style { foreground: Some(self), bold: true, ..Style::default() }
     }
 
     /// Returns a `Style` with the 'dimmed' property set and the foreground
     /// colour set to this colour.
     pub fn dimmed(self) -> Style {
-        Style { foreground: Some(self), dimmed: true, .. Style::default() }
+        Style { foreground: Some(self), dimmed: true, ..Style::default() }
     }
 
     /// Returns a `Style` with the 'italic' property set and the foreground
     /// colour set to this colour.
     pub fn italic(self) -> Style {
-        Style { foreground: Some(self), italic: true, .. Style::default() }
+        Style { foreground: Some(self), italic: true, ..Style::default() }
     }
 
     /// Returns a `Style` with the 'underline' property set and the foreground
     /// colour set to this colour.
     pub fn underline(self) -> Style {
-        Style { foreground: Some(self), underline: true, .. Style::default() }
+        Style { foreground: Some(self), underline: true, ..Style::default() }
     }
 
     /// Returns a `Style` with the 'blink' property set and the foreground
     /// colour set to this colour.
     pub fn blink(self) -> Style {
-        Style { foreground: Some(self), blink: true, .. Style::default() }
+        Style { foreground: Some(self), blink: true, ..Style::default() }
     }
 
     /// Returns a `Style` with the 'reverse' property set and the foreground
     /// colour set to this colour.
     pub fn reverse(self) -> Style {
-        Style { foreground: Some(self), reverse: true, .. Style::default() }
+        Style { foreground: Some(self), reverse: true, ..Style::default() }
     }
 
     /// Returns a `Style` with the 'hidden' property set and the foreground
     /// colour set to this colour.
     pub fn hidden(self) -> Style {
-        Style { foreground: Some(self), hidden: true, .. Style::default() }
+        Style { foreground: Some(self), hidden: true, ..Style::default() }
     }
 
     fn write_foreground_code(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match *self {
-            Black        => write!(f, "30"),
-            Red          => write!(f, "31"),
-            Green        => write!(f, "32"),
-            Yellow       => write!(f, "33"),
-            Blue         => write!(f, "34"),
-            Purple       => write!(f, "35"),
-            Cyan         => write!(f, "36"),
-            White        => write!(f, "37"),
-            Fixed(n)     => write!(f, "38;5;{}", &n),
+            Black => write!(f, "30"),
+            Red => write!(f, "31"),
+            Green => write!(f, "32"),
+            Yellow => write!(f, "33"),
+            Blue => write!(f, "34"),
+            Purple => write!(f, "35"),
+            Cyan => write!(f, "36"),
+            White => write!(f, "37"),
+            Fixed(n) => write!(f, "38;5;{}", &n),
             Rgb(r, g, b) => write!(f, "38;2;{};{};{}", &r, &g, &b),
         }
     }
 
     fn write_background_code(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match *self {
-            Black        => write!(f, "40"),
-            Red          => write!(f, "41"),
-            Green        => write!(f, "42"),
-            Yellow       => write!(f, "43"),
-            Blue         => write!(f, "44"),
-            Purple       => write!(f, "45"),
-            Cyan         => write!(f, "46"),
-            White        => write!(f, "47"),
-            Fixed(n)     => write!(f, "48;5;{}", &n),
+            Black => write!(f, "40"),
+            Red => write!(f, "41"),
+            Green => write!(f, "42"),
+            Yellow => write!(f, "43"),
+            Blue => write!(f, "44"),
+            Purple => write!(f, "45"),
+            Cyan => write!(f, "46"),
+            White => write!(f, "47"),
+            Fixed(n) => write!(f, "48;5;{}", &n),
             Rgb(r, g, b) => write!(f, "48;2;{};{};{}", &r, &g, &b),
         }
     }
@@ -316,53 +314,55 @@ impl Style {
     }
 
     /// Applies the `Style` to a string, yielding a `StyledString`.
-    pub fn paint<'a, S>(self, string: S) -> StyledString<'a> where S: Into<Cow<'a, str>> {
+    pub fn paint<'a, S>(self, string: S) -> StyledString<'a>
+        where S: Into<Cow<'a, str>>
+    {
         StyledString { string: string.into(), style: self }
     }
 
     /// Sets the foreground to the given colour.
     pub fn foreground(&self, color: Color) -> Style {
-        Style { foreground: Some(color), .. *self }
+        Style { foreground: Some(color), ..*self }
     }
 
     /// Sets the background to the given colour.
     pub fn background(&self, color: Color) -> Style {
-        Style { background: Some(color), .. *self }
+        Style { background: Some(color), ..*self }
     }
 
     /// Applies the 'bold' property.
     pub fn bold(&self) -> Style {
-        Style { bold: true, .. *self }
+        Style { bold: true, ..*self }
     }
 
     /// Applies the 'dimmed' property.
     pub fn dimmed(&self) -> Style {
-        Style { dimmed: true, .. *self }
+        Style { dimmed: true, ..*self }
     }
 
     /// Applies the 'italic' property.
     pub fn italic(&self) -> Style {
-        Style { italic: true, .. *self }
+        Style { italic: true, ..*self }
     }
 
     /// Applies the 'underline' property.
     pub fn underline(&self) -> Style {
-        Style { underline: true, .. *self }
+        Style { underline: true, ..*self }
     }
 
     /// Applies the 'blink' property.
     pub fn blink(&self) -> Style {
-        Style { blink: true, .. *self }
+        Style { blink: true, ..*self }
     }
 
     /// Applies the 'reverse' property.
     pub fn reverse(&self) -> Style {
-        Style { reverse: true, .. *self }
+        Style { reverse: true, ..*self }
     }
 
     /// Applies the 'hidden' property.
     pub fn hidden(&self) -> Style {
-        Style { hidden: true, .. *self }
+        Style { hidden: true, ..*self }
     }
 
     /// Returns true if this `Style` has no colours or properties set.
@@ -375,26 +375,30 @@ impl Style {
     fn write_prefix(&self, f: &mut fmt::Formatter) -> fmt::Result {
         use std::fmt::Write;
 
-        if self.is_plain() { return Ok(()); }
+        if self.is_plain() {
+            return Ok(());
+        }
 
         try!(write!(f, "\x1b["));
         let mut written_anything = false;
 
         {
             let mut write_char = |c| {
-                if written_anything { try!(f.write_char(';')); }
+                if written_anything {
+                    try!(f.write_char(';'));
+                }
                 written_anything = true;
                 try!(f.write_char(c));
                 Ok(())
             };
 
-            if self.bold      { try!(write_char('1')); }
-            if self.dimmed    { try!(write_char('2')); }
-            if self.italic    { try!(write_char('3')); }
+            if self.bold { try!(write_char('1')); }
+            if self.dimmed { try!(write_char('2')); }
+            if self.italic { try!(write_char('3')); }
             if self.underline { try!(write_char('4')); }
-            if self.blink     { try!(write_char('5')); }
-            if self.reverse   { try!(write_char('6')); }
-            if self.hidden    { try!(write_char('7')); }
+            if self.blink { try!(write_char('5')); }
+            if self.reverse { try!(write_char('6')); }
+            if self.hidden { try!(write_char('7')); }
         }
 
         if let Some(fg) = self.foreground {

@@ -17,7 +17,8 @@
 use std::fmt;
 
 /// Represents the width of a terminal.
-#[derive(Debug)] pub struct Width(pub u16);
+#[derive(Debug)]
+pub struct Width(pub u16);
 
 impl fmt::Display for Width {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -29,7 +30,8 @@ impl fmt::Display for Width {
 }
 
 /// Represents the height of a terminal.
-#[derive(Debug)] pub struct Height(pub u16);
+#[derive(Debug)]
+pub struct Height(pub u16);
 
 impl fmt::Display for Height {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -40,11 +42,15 @@ impl fmt::Display for Height {
     }
 }
 
-#[cfg(unix)] mod unix;
+#[cfg(unix)]
+mod unix;
 
-#[cfg(unix)] pub use self::unix::size;
-#[cfg(unix)] pub use self::unix::width;
-#[cfg(unix)] pub use self::unix::height;
+#[cfg(unix)]
+pub use self::unix::size;
+#[cfg(unix)]
+pub use self::unix::width;
+#[cfg(unix)]
+pub use self::unix::height;
 
 // TODO: Implement Windows support for `tutil::screen`.
 #[cfg(windows)]

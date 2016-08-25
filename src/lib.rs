@@ -31,7 +31,8 @@
 #![warn(trivial_casts, trivial_numeric_casts)]
 #![warn(unused_extern_crates, unused_qualifications)]
 
-#[cfg(unix)] extern crate libc;
+#[cfg(unix)]
+extern crate libc;
 
 pub mod crayon;
 pub mod screen;
