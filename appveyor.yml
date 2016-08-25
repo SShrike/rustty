@@ -14,9 +14,6 @@ install:
   - cargo -V
 
 build:
-  # TODO: Improve the conditionals
-  # Compile without Clippy, as some of Clippy's dependencies seem to have
-  # problems on these targets.
   - if "%TARGET%" == "x86_64-pc-windows-msvc" cargo build --verbose
   - if "%TARGET%" == "i686-pc-windows-msvc" cargo build --verbose
   - if "%TARGET%" == "x86_64-pc-windows-gnu" cargo build --verbose --features lints
