@@ -13,7 +13,7 @@ install:
   - rustc -Vv
   - cargo -V
 
-build:
+build_script:
   - if "%TARGET%" == "x86_64-pc-windows-msvc" cargo build --verbose
   - if "%TARGET%" == "i686-pc-windows-msvc" cargo build --verbose
   - if "%TARGET%" == "x86_64-pc-windows-gnu" cargo build --verbose --features lints
