@@ -11,8 +11,7 @@
 //! * Linux
 //! * macOS
 //! * FreeBSD
-//!
-//! Windows support is planned.
+//! * Windows
 
 use std::fmt;
 
@@ -52,21 +51,15 @@ pub use self::unix::width;
 #[cfg(unix)]
 pub use self::unix::height;
 
-// TODO: Implement Windows support for `tutil::screen`.
 #[cfg(windows)]
-pub fn size() -> Option<(Width, Height)> {
-    unimplemented!();
-}
+mod windows;
 
 #[cfg(windows)]
-pub fn width() -> Option<Width> {
-    unimplemented!();
-}
-
+pub use self::windows::size;
 #[cfg(windows)]
-pub fn size() -> Option<Height> {
-    unimplemented!();
-}
+pub use self::windows::width;
+#[cfg(windows)]
+pub use self::windows::height;
 
 #[cfg(test)]
 mod test {

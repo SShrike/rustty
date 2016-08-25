@@ -10,8 +10,14 @@ description = "A toolbox for developing command line applications."
 documentation = "https://shrike.me/tutil"
 
 [dependencies]
-libc = "^0.2.13"
-clippy = { version = "~0.0.55", optional = true }
+clippy = { version = "*", optional = true }
+
+[target."cfg(unix)".dependencies]
+libc = "^0.2"
+
+[target."cfg(windows)".dependencies]
+winapi = "^0.2"
+kernel32-sys = "^0.2"
 
 [features]
 default=[]

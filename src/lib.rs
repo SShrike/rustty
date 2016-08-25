@@ -34,5 +34,10 @@
 #[cfg(unix)]
 extern crate libc;
 
+#[cfg(windows)]
+extern crate winapi;
+#[cfg(windows)]
+extern crate kernel32;
+
 pub mod crayon;
 pub mod screen;
