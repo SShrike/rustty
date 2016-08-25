@@ -1,8 +1,8 @@
 environment:
   matrix:
-  - TARGET: x86_64-pc-windows-msvc
+  #- TARGET: x86_64-pc-windows-msvc
   - TARGET: x86_64-pc-windows-gnu
-  - TARGET: i686-pc-windows-msvc
+  #- TARGET: i686-pc-windows-msvc
   - TARGET: i686-pc-windows-gnu
 
 install:
@@ -14,11 +14,8 @@ install:
   - cargo -V
 
 build_script:
-  - if "%TARGET%" == "x86_64-pc-windows-msvc" cargo build --verbose
-  - if "%TARGET%" == "i686-pc-windows-msvc" cargo build --verbose
-  - if "%TARGET%" == "x86_64-pc-windows-gnu" cargo build --verbose --features lints
-  - if "%TARGET%" == "i686-pc-windows-gnu" cargo build --verbose --features lints
+  - cargo build --verbose --features lints
   - cargo package
 
 test_script:
-  - cargo test --verbose
+  - cargo test --verbose --features lints
