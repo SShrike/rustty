@@ -35,7 +35,7 @@ pub fn size() -> Option<(Width, Height)> {
     let mut winsize = WinSize { ws_row: 0, ws_col: 0, ws_xpixel: 0, ws_ypixel: 0 };
 
     let success: bool = unsafe {
-        ioctl(STDOUT_FILENO, TIOCGWINSZ, &mut winsize) != 0
+        ioctl(STDOUT_FILENO, TIOCGWINSZ, &mut winsize) == 0
     };
 
     if success {
