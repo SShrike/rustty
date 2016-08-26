@@ -112,6 +112,10 @@ mod test {
         if let Some((Width(width), Height(height))) = size() {
             assert_eq!(width, cols);
             assert_eq!(height, rows);
+        } else {
+            // If the terminal size cannot be found, than stty must not be able to find it either.
+            assert_eq!(cols, 0);
+            assert_eq!(rows, 0);
         }
     }
 
@@ -123,9 +127,12 @@ mod test {
 
         let cols = u16::from_str_radix(stdout.split_whitespace().last().unwrap(), 10).unwrap();
 
-        if let Some((Width(width), Height(_))) = size() {
+        if let Some(Width(width)) = width() {
             assert_eq!(width, cols);
-        }
+        } else {
+            // If the terminal size cannot be found, than stty must not be able to find it either.
+            assert_eq!(cols, 0);
+        };
     }
 
     #[test]
@@ -136,8 +143,11 @@ mod test {
 
         let rows = u16::from_str_radix(stdout.split_whitespace().next().unwrap(), 10).unwrap();
 
-        if let Some((Width(_), Height(height))) = size() {
+        if let Some(Height(height)) = height() {
             assert_eq!(height, rows);
-        }
+        } else {
+            // If the terminal size cannot be found, than stty must not be able to find it either.
+            assert_eq!(rows, 0);
+        };
     }
 }
