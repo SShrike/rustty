@@ -32,14 +32,17 @@ pub fn size() -> Option<(Width, Height)> {
 
     if !is_tty { return None; }
 
-    let (width, height) = unsafe {
-        let mut winsize = WinSize { ws_row: 0, ws_col: 0, ws_xpixel: 0, ws_ypixel: 0 };
-        ioctl(STDOUT_FILENO, TIOCGWINSZ, &mut winsize);
+    let mut winsize = WinSize { ws_row: 0, ws_col: 0, ws_xpixel: 0, ws_ypixel: 0 };
 
-        (winsize.ws_col, winsize.ws_row)
+    let success: bool = unsafe {
+        ioctl(STDOUT_FILENO, TIOCGWINSZ, &mut winsize) != 0
     };
 
-    Some((Width(width), Height(height)))
+    if success {
+        Some((Width(winsize.ws_col), Height(winsize.ws_row)))
+    } else {
+        None
+    }
 }
 
 /// Returns the terminal screen width (in columns).
