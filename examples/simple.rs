@@ -7,5 +7,7 @@ use tutil::screen;
 
 fn main() {
     println!("{}", Red.on(Black).blink().paint("Hello world!"));
-    println!("{:?}", screen::size());
+    
+    let size = screen::size().unwrap();
+    println!("The screen size is {}x{}.", size.0, size.1);
 }
