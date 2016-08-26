@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.2.0] - 2016-08-16
+## [0.2.0] - 2016-08-26
 
 ### Added
 - A provision script for the Vagrant environment.
