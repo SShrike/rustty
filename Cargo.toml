@@ -7,7 +7,7 @@ authors = ["Severen Redwood <severen@shrike.me>"]
 readme = "README.md"
 homepage = "https://github.com/SShrike/tutil"
 description = "A toolbox for developing command line applications."
-documentation = "https://beta.docs.rs/tutil"
+documentation = "https://docs.rs/tutil"
 
 [dependencies]
 clippy = { version = "~0.0", optional = true }

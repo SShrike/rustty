@@ -19,7 +19,7 @@ Tutil intends to support Linux, BSD, macOS (formerly known as OS X) and Windows.
 However, in this early stage of development, Tutil in its entirety probably only
 works on Linux.
 
-The stable documentation can by accessed [here](https://beta.docs.rs/tutil).
+The stable documentation can by accessed [here](https://docs.rs/tutil).
 
 ## Features
 
