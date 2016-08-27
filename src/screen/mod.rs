@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-//! Functions for detecting the terminal screen size.
+//! A module for detecting the size of the terminal screen.
 //!
 //! # OS Support
 //!
@@ -12,6 +12,15 @@
 //! * macOS
 //! * FreeBSD
 //! * Windows
+//!
+//! # Basic Usage
+//!
+//! ```no_run
+//! use tutil::screen;
+//!
+//! let size = screen::size().unwrap(); // Don't use unwrap in real code.
+//! println!("The screen size is {}x{}.", size.0, size.1);
+//! ```
 
 use std::fmt;
 

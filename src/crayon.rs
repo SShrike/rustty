@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-//! A module for handling terminal output styling.
+//! A module for styling terminal output.
 //!
 //! It would be fair to say that this module ~~is a rip off of~~ is *heavily*
 //! influenced by [ogham][ogham]'s [ansi_term][ansiterm] crate and
@@ -92,9 +92,11 @@ use std::default::Default;
 
 use self::Color::*;
 
-/// A string coupled with a `Style` in order to display it in a terminal.
+/// A string coupled with a [`Style`] in order to display it in a terminal.
 ///
 /// It can be turned into a string with the `.to_string()` method.
+///
+/// [`Style`]: struct.Style.html
 #[derive(Debug, Clone, PartialEq)]
 pub struct StyledString<'a> {
     string: Cow<'a, str>,
@@ -111,9 +113,7 @@ impl<'a> fmt::Display for StyledString<'a> {
     }
 }
 
-impl<'a, S> From<S> for StyledString<'a>
-    where S: Into<Cow<'a, str>>
-{
+impl<'a, S> From<S> for StyledString<'a> where S: Into<Cow<'a, str>> {
     fn from(string: S) -> StyledString<'a> {
         StyledString { string: string.into(), style: Style::default() }
     }
@@ -202,62 +202,81 @@ pub enum Color {
 }
 
 impl Color {
-    /// Convenience method for creating a `StyledString` with the foreground set
-    /// without having to manually create a `Style` or use `<color>.normal().paint()`.
-    pub fn paint<'a, S>(self, string: S) -> StyledString<'a>
-        where S: Into<Cow<'a, str>>
-    {
+    /// Convenience method for creating a [`StyledString`] with the foreground set
+    /// without having to manually create a [`Style`] or use `<color>.normal().paint()`.
+    ///
+    /// [`StyledString`]: struct.StyledString.html
+    /// [`Style`]: struct.Style.html
+    pub fn paint<'a, S>(self, string: S) -> StyledString<'a> where S: Into<Cow<'a, str>> {
         StyledString { string: string.into(), style: self.normal() }
     }
 
-    /// Returns a `Style` with the foreground colour set to this colour.
+    /// Returns a [`Style`] with the foreground colour set to this colour.
+    ///
+    /// [`Style`]: struct.Style.html
     pub fn normal(self) -> Style {
         Style { foreground: Some(self), ..Style::default() }
     }
 
-    /// The same as `Color::normal()`, but also sets the background colour.
+    /// The same as [`Color::normal()`], but also sets the background colour.
+    ///
+    /// [`Color::normal()`]: #method.normal
     pub fn on(self, background: Color) -> Style {
         Style { foreground: Some(self), background: Some(background), ..Style::default() }
     }
 
-    /// Returns a `Style` with the 'bold' property set and the foreground colour
+    /// Returns a [`Style`] with the 'bold' property set and the foreground colour
     /// set to this colour.
+    ///
+    /// [`Style`]: struct.Style.html
     pub fn bold(self) -> Style {
         Style { foreground: Some(self), bold: true, ..Style::default() }
     }
 
-    /// Returns a `Style` with the 'dimmed' property set and the foreground
+    /// Returns a [`Style`] with the 'dimmed' property set and the foreground
     /// colour set to this colour.
+    ///
+    /// [`Style`]: struct.Style.html
     pub fn dimmed(self) -> Style {
         Style { foreground: Some(self), dimmed: true, ..Style::default() }
     }
 
-    /// Returns a `Style` with the 'italic' property set and the foreground
+    /// Returns a [`Style`] with the 'italic' property set and the foreground
     /// colour set to this colour.
+    ///
+    /// [`Style`]: struct.Style.html
     pub fn italic(self) -> Style {
         Style { foreground: Some(self), italic: true, ..Style::default() }
     }
 
-    /// Returns a `Style` with the 'underline' property set and the foreground
+    /// Returns a [`Style`] with the 'underline' property set and the foreground
     /// colour set to this colour.
+    ///
+    /// [`Style`]: struct.Style.html
     pub fn underline(self) -> Style {
         Style { foreground: Some(self), underline: true, ..Style::default() }
     }
 
-    /// Returns a `Style` with the 'blink' property set and the foreground
+    /// Returns a [`Style`] with the 'blink' property set and the foreground
     /// colour set to this colour.
+    ///
+    /// [`Style`]: struct.Style.html
     pub fn blink(self) -> Style {
         Style { foreground: Some(self), blink: true, ..Style::default() }
     }
 
-    /// Returns a `Style` with the 'reverse' property set and the foreground
+    /// Returns a [`Style`] with the 'reverse' property set and the foreground
     /// colour set to this colour.
+    ///
+    /// [`Style`]: struct.Style.html
     pub fn reverse(self) -> Style {
         Style { foreground: Some(self), reverse: true, ..Style::default() }
     }
 
-    /// Returns a `Style` with the 'hidden' property set and the foreground
+    /// Returns a [`Style`] with the 'hidden' property set and the foreground
     /// colour set to this colour.
+    ///
+    /// [`Style`]: struct.Style.html
     pub fn hidden(self) -> Style {
         Style { foreground: Some(self), hidden: true, ..Style::default() }
     }
@@ -313,10 +332,10 @@ impl Style {
         Style::default()
     }
 
-    /// Applies the `Style` to a string, yielding a `StyledString`.
-    pub fn paint<'a, S>(self, string: S) -> StyledString<'a>
-        where S: Into<Cow<'a, str>>
-    {
+    /// Applies the `Style` to a string, yielding a [`StyledString`].
+    ///
+    /// [`StyledString`]: struct.StyledString.html
+    pub fn paint<'a, S>(self, string: S) -> StyledString<'a> where S: Into<Cow<'a, str>> {
         StyledString { string: string.into(), style: self }
     }
 
