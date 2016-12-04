@@ -17,6 +17,10 @@ rust:
 - beta
 - stable
 
+matrix:
+  allow_failures:
+      - rust: nightly
+
 cache: cargo
 
 env:
